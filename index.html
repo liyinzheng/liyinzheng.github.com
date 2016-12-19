@@ -6,21 +6,45 @@
 		<title>LYZ</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		
 		<style type="text/css">
-			body{ margin: 0; padding: 0; width: 100%; height: 500px; background: url('http://h5.86.cc/walls/20140818/1440x900_edfe9afcaabdec8.jpg') no-repeat center top; background-size: cover;}
+			body{ margin: 0; padding: 0;}
+			.page{ width: 100%; height: 100%;position: relative; overflow: hidden;}
+			
+			
+			.main{ width: 100%; height: 1000px; background: url('http://h5.86.cc/walls/20140818/1440x900_edfe9afcaabdec8.jpg') no-repeat center top; background-size: cover; animation: main 20s infinite linear;}
+			@keyframes main{
+				from{transform: scale(1);}
+				50%{transform: scale(1.1);}
+				to{transform: scale(1);}
+			}
+			
+			
 			a { display: block; width: 200px; height: 200px; border-radius: 100px; border: 2px solid #fff; position: absolute; top: 50%; left: 50%; margin-top: -100px; margin-left: -100px;   background: url('http://p3.music.126.net/-cHT4QM3Ay8nuXWP8TUgXQ==/1380986617746829.jpg') no-repeat; background-size: cover;  animation: yuan 10s infinite linear;}
 			@keyframes yuan{
 				from{transform: rotate(0);}
 				to{transform: rotate(360deg);}
 			}
 			a:hover{ width: 220px; height: 220px; border-radius: 110px; margin-top: -110px; margin-left: -110px; }
-			.music{ float: right;}
+			.music{ display: none; }
 		</style>
 	</head>
 
 	<body>
-		<a href="html/main.html" class="anniu"></a>
-		<iframe class="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 src="//music.163.com/outchain/player?type=2&id=33187016&auto=1&height=32"></iframe>
+		<div class="page">
+			<div class="main"></div>
+			<a href="html/main.html" class="anniu"></a>
+			<!--<iframe class="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 src="//music.163.com/outchain/player?type=2&id=33187016&auto=1&height=32"></iframe>-->
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				var t=$(window).height();
+				console.log(t);
+				$(".main").height(t);
+			})
+		</script>
+		
 	</body>
 
 </html>
