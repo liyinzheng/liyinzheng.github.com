@@ -1,47 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
 
 	<head>
 		<meta charset="UTF-8">
-		<title>LYZ</title>
+		<title>目录</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
 		
 		<style type="text/css">
-			body{ margin: 0; padding: 0;}
-			.page{ width: 100%; height: 100%;position: relative; overflow: hidden;}
-			
-			
-			.main{ width: 100%; height: 1000px; background: url('http://h5.86.cc/walls/20140818/1440x900_edfe9afcaabdec8.jpg') no-repeat center top; background-size: cover; animation: main 20s infinite linear;}
-			@keyframes main{
-				from{transform: scale(1);}
-				50%{transform: scale(1.1);}
-				to{transform: scale(1);}
-			}
-			
-			
-			a { display: block; width: 200px; height: 200px; border-radius: 100px; border: 2px solid #fff; position: absolute; top: 50%; left: 50%; margin-top: -100px; margin-left: -100px;   background: url('http://p3.music.126.net/-cHT4QM3Ay8nuXWP8TUgXQ==/1380986617746829.jpg') no-repeat; background-size: cover;  animation: yuan 10s infinite linear;}
-			@keyframes yuan{
-				from{transform: rotate(0);}
-				to{transform: rotate(360deg);}
-			}
-			a:hover{ width: 220px; height: 220px; border-radius: 110px; margin-top: -110px; margin-left: -110px; }
-			.music{ display: none; }
+			body,h1,ul,li{ margin: 0; padding: 0; background: #FFFFCC; color: #66ccff;}
+			a{ color: #66CCFF; text-decoration: none;}
+			.banner{display: none; position: absolute; top: 0; left: 0; width: 100%; height: 1000px; background: url(img/banner.jpg) no-repeat top center; background-size: cover; z-index: 2; opacity: 0;}
+			.content{ position: relative; padding-top: 120px;}
+			.content .small{position: absolute; top: 50px; left: 50px; display: block; width: 100px; height: 100px; border-radius: 50px; border: 2px solid #fff; background: url(img/small.jpg) no-repeat; background-size: cover; transition: all 0.3s;}
+			.content .small:hover{ top: 45px; left: 45px; width: 110px; height: 110px; border-radius: 55px; }
+			.content h1{ text-align: center;}
+			.content ul{ width: 400px; margin: 20px auto; font-size: 20px;}
 		</style>
 	</head>
 
 	<body>
-		<div class="page">
-			<div class="main"></div>
-			<a href="html/main.html" class="anniu"></a>
+		<div class="banner"></div>
+		<div class="content">
+			<div class="small"></div>
+			<h1>目录</h1>
+			<ul>
+				<li><a href="pages/test-1/test-1.html">test-1 THE FOOL</a></li>
+				<li><a href="pages/test-2/test-2.html">test-2 kiana</a></li>
+			</ul>
 		</div>
 		
 		<script type="text/javascript">
 			$(function(){
-				var t=$(window).height();
-				console.log(t);
-				$(".main").height(t);
+				var $banner=$(".banner");
+				var	$small=$(".small");
+				
+				function makeheight(){
+					var t=$(window).height();
+					$(".banner").height(t);
+				}
+				makeheight();
+				$(window).resize(makeheight);
+				
+				$banner.click(function(){
+					$banner.animate({'opacity':0},'slow',function(){
+						$banner.hide();
+					})
+				})
+				
+				$small.click(function(){
+					$banner.show().animate({'opacity':1},'slow')
+				})
+				
+				
+				
+				
+				
 			})
+			
+			
+			
+			
 		</script>
 		
 	</body>
