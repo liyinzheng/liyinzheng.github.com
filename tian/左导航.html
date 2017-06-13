@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>左导航</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			body{ background: #FFFAE8;}
+			.page{ width: 1200px; margin: 30px auto; position: relative; padding-top: 60px;}
+			.home{ margin: 100px 0; display: block;}
+			label{ display: block; margin: 20px 0;}
+			.wenben{ width: 300px; height: 150px; }
+			.result-box{  margin-top: 30px;}
+			.result{ width: 400px; height: 300px;}
+		</style>
+	</head>
+	<body>
+		
+			<nav class="navbar navbar-default" role="navigation">
+			    <div class="container-fluid">
+			    <div class="navbar-header">
+			        <a class="navbar-brand" href="index.html">回目录</a>
+			    </div>
+			    <div>
+			        <ul class="nav navbar-nav">
+			            <li><a href="css兼容性.html">css兼容性</a></li>
+			            <li><a href="活动页.html">活动页</a></li>
+			            <li class="active"><a href="左导航.html">左导航</a></li>
+			            <li><a href="分享页.html">分享页</a></li>
+			        </ul>
+			    </div>
+			    </div>
+			</nav>
+		
+		<div class="page">
+			<div class="col-xs-6">
+				
+				<label class="top-img-btn-box">
+					是否有头图：
+					<select name="top-img" class="top-img-btn">
+						<option value="no">无</option>
+						<option value="yes">有</option>
+					</select>
+				</label>
+				<label class="top-img-url-box">头图链接： <input type="text"  value="" class="top-img-url" /></label>
+				
+				<label>
+					<p>原文本输入区 （说明：将所有左导航点全部粘贴进去）</p>
+					<textarea  class="wenben"></textarea>
+				</label>
+				
+				
+				<div class="button">
+					<button class="submit btn btn-default" >生成</button>
+					<button class="clear btn btn-default"  >清除</button>
+				</div>	
+				
+			</div>
+			
+			
+			<div class="result-box col-xs-6">
+				<p><b>结果区：</b></p>
+				<textarea class="result" id="result"></textarea>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			$topBtn=$(".top-img-btn"),
+			$topUrl=$(".top-img-url"),
+			$numbers=$(".numbers"),
+			$items=$(".items");
+			
+			if($topBtn.val()=='no'){ $topUrl.attr('disabled','disabled'); }
+			$topBtn.on('change',function(){
+				if($topBtn.val()=='no'){ $topUrl.attr('disabled','disabled');  } 
+				else{ $topUrl.removeAttr('disabled');  }
+			})
+			
+			$(".clear").click(function(){
+				$(".page input, .wenben").val('');
+			})
+			
+			$(".submit").click(function(){
+				
+				var t,ts0,ts1,ts2,ts3;
+				topBtn=$topBtn.val();
+				topUrl=$topUrl.val();
+				
+				ts0=$(".wenben").val();
+				ts1=ts0.split("html");
+				ts2=[],ts3=[];
+
+				for(var i=0;i<ts1.length;i++){
+					if(ts1[i]=='') ts1.splice(i,1)
+				}
+				
+				for(var i=0;i<ts1.length;i++){
+					ts1[i]+='html';
+					ts2[i]=ts1[i].split('http');
+					ts2[i][1]='http'+ts2[i][1];
+					ts3[i]=[];
+					ts3[i][0]=$.trim(ts2[i][0]); 
+					ts3[i][1]=$.trim(ts2[i][1]); 
+				}
+				
+				
+				t=`
+<style type="text/css">
+.nav_left{ width:123px; padding-bottom:5px; z-index:33;}
+.nav_left .top-img{ width: 120px; height: 120px; background:url(${topUrl})  no-repeat center; }
+.nav_left ul{  width:110px; margin:0 auto; position: relative; z-index: 9;}
+.nav_left ul li{width:100%; height:30px; background:url(http://img-big.tiantian.com/cuxiaoqu2011/160801makeup/zhc/bg1.png?2) 1px 0 no-repeat; margin-top:7px; text-align:center;}
+.nav_left ul li:hover{ background:url(http://img-big.tiantian.com/cuxiaoqu2011/160801makeup/zhc/bg2.png?2) 1px 0 no-repeat;}
+.nav_left ul li a{color:#fff; display:block; width:100%; height:100%; font-size:14px; font-family:"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;}
+.nav_left ul li:hover a{color:#000;}
+.nav_left_close{display:block; width:100%; height:30px; margin-top:10px; *margin-top:0; background:url(http://img-big.tiantian.com/cuxiaoqu2011/160717favour/close2.png) 10px 0 no-repeat;}
+.nav_left_close:hover{background:url(http://img-big.tiantian.com/cuxiaoqu2011/160717favour/close1.png) 10px 0 no-repeat;}
+.nav_left_down{display:none; width:100%; height:30px; margin-top:-5px; background:url(http://img-big.tiantian.com/cuxiaoqu2011/160717favour/down2.png) 5px 0 no-repeat; position: relative; z-index: 10;}
+.nav_left_down:hover{ background:url(http://img-big.tiantian.com/cuxiaoqu2011/160717favour/down1.png) 5px 0 no-repeat;}
+.hd_nav_bt{ width:100%; padding:10px 0; display:none; position:fixed; z-index:999;  left:0; bottom:0; background:#ec3461;}
+.hd_nav_bt .w1000{ width:1000px; margin:0 auto;}
+.hd_nav_bt li{  margin:0; list-style:none; padding:0 20px; display:inline-block; border-right:1px solid #e82020; float:left; height:24px; line-height:24px; font-size:14px; font-family:"微软雅黑";}
+.hd_nav_bt li a{ color:#fff}
+.hd_nav_bt li a:hover{ color:#ffcc15}
+.hd_nav_bt li:last-child{ border-right:0;}
+@media screen and (max-width: 1180px) {
+	.hd_nav_fl,.nav_show_fl{ display:none}
+	.hd_nav_bt{ display:block;}
+	.nav_left{ display:none}
+	}
+.erweima{ width:110px; height:110px; margin:0 auto -5px;background: url(http://img-big.tiantian.com/cuxiaoqu2011/161212tian/index1/ewm.jpg) no-repeat center; background-size: cover; margin-top: 10px;}
+</style>
+
+ <script>
+ 	$(function(){
+		$('.nav_left_close').click(function(){
+		if($('.nav_left_ul').css('display') == 'block'){
+			$('.nav_left_ul').hide();
+			$('.nav_left_close').hide();
+			$('.erweima').hide();
+            $('.nav_left_down').css('display','block');
+		}else{
+		$('.nav_left_ul').show();
+		$('.nav_left_down').hide();
+		}
+		});
+		$('.nav_left_down').click(function(){
+		if($('.nav_left_ul').css('display') == 'none'){
+			$('.nav_left_ul').show();
+			$('.nav_left_close').show();
+			$('.erweima').show();
+            $('.nav_left_down').hide();
+		}else{
+		$('.nav_left_ul').hide();
+		 $('.nav_left_close').show();
+		 $('.nav_left_down').hide();
+		}
+		});
+	})
+&lt;/script>
+				
+<div class="nav_left" style="display:none;">`;
+				if(topBtn=='yes'){
+					t+=`
+<div class="top-img"></div>`
+				}
+				
+				t+=`
+<div class="nav_left_down"></div>
+<ul class="nav_left_ul">`;
+				function makeItem(){
+					var tname, turl;
+					for(var i=0; i<ts3.length; i++){
+						t+=`
+<li><a href="${ts3[i][1]}" target="_blank">${ts3[i][0]}</a></li>`
+					}
+				}
+				
+				makeItem();
+				t+=`
+</ul>
+<div class="erweima"></div>
+<a href="javascript:;" class="nav_left_close"></a>
+</div>
+<div class="hd_nav_bt ">
+	<div class="w1000">    	
+     <ul>`;
+				makeItem();
+				t+=`
+   </ul>
+  </div>
+</div>`;
+
+//				$(".result").html(t);  //此处应使用原生js的innerHTML
+				document.getElementById("result").innerHTML=t;
+				
+			})
+			
+		</script>
+		
+	</body>
+</html>

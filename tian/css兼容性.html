@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css兼容性</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			body{ font-family: arial ,"microsoft yahei"; background: #FFFAE8;}
+			.page{ width: 1200px; margin: 50px auto; padding-top: 60px;}
+			.example{ width: 580px; text-align: center; margin: 0 auto; padding: 10px; }
+			input{  width: 70%;}
+			.jieguo1,.jieguo2{ width: 578px; min-height: 300px;margin: 10px 0; padding: 10px;  }
+		</style>
+	</head>
+	
+	<body>
+		
+			<nav class="navbar navbar-default" role="navigation">
+			    <div class="container-fluid">
+			    <div class="navbar-header">
+			        <a class="navbar-brand" href="index.html">回目录</a>
+			    </div>
+			    <div>
+			        <ul class="nav navbar-nav">
+			            <li class="active"><a href="css兼容性.html">css兼容性</a></li>
+			            <li><a href="活动页.html">活动页</a></li>
+			            <li><a href="左导航.html">左导航</a></li>
+			            <li><a href="分享页.html">分享页</a></li>
+			        </ul>
+			    </div>
+			    </div>
+			</nav>
+			
+		<div class="page">
+			<div class="col-xs-6">
+				<div class="example">
+					<b>animation</b>( 例子：animation: feiji 10s infinite linear; )
+				</div>
+				<input type="text" class="text1" />
+				<button class="btn1 btn btn-default">生成</button>
+				<button class="btn1s btn btn-default">清空</button>
+				<textarea class="jieguo1"></textarea>
+				<br />
+				<br />
+			</div>
+			<div class="col-xs-6">
+				<div class="example">
+					<b>@keyframes</b>( 例子：feiji{ 0%{opacity:0;} 100%{opacity:1;}} )
+				</div>
+				<input type="text" class="text2" />
+				<button class="btn2 btn btn-default">生成</button>
+				<button class="btn2s btn btn-default">清空</button>
+				<textarea class="jieguo2"></textarea>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var $text1=$(".text1");
+			var $text2=$(".text2");
+			var $btn1=$(".btn1");
+			var $btn2=$(".btn2");
+			var $btn1s=$(".btn1s");
+			var $btn2s=$(".btn2s");
+			var $jieguo1=$(".jieguo1");
+			var $jieguo2=$(".jieguo2");
+		
+			$btn1.click(function(){
+				var t=$.trim($text1.val());
+				var ts=`-webkit-${t}\r\n-moz-${t}\r\n-ms-${t}\r\n${t}`
+				$jieguo1.val(ts);
+			})
+			
+			$btn1s.click(function(){
+				$text1.val('');
+				$jieguo1.val('');
+			})
+			
+			$btn2.click(function(){
+				var t=$.trim($text2.val());
+				var ts=`@-webkit-keyframes ${t}\r\n@-moz-keyframes ${t}\r\n@-ms-keyframes ${t}\r\n@keyframes ${t}`
+				$jieguo2.val(ts);
+			})
+			
+			$btn2s.click(function(){
+				$text2.val('');
+				$jieguo2.val('');
+			})
+		</script>
+	</body>
+</html>
