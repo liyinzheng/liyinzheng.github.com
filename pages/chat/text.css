@@ -1,0 +1,24 @@
+
+
+body { background-color: #9BE4D8;}
+.mobile{ margin: 50px auto; width: 360px; background-color: #eee; border-radius: 20px; overflow: hidden; height: 700px;}
+.mobile-head{ height: 50px; display: flex; align-items: center; justify-content: center;}
+.mobile-body{ height: 600px; box-sizing: border-box; padding: 20px 10px 0 10px; background-color: rgba(102,204,255,0.5); overflow-x: hidden; overflow-y: scroll;}
+
+
+
+.msg-box{ margin: 10px;}
+.msg-box::after{ content: ""; display: block; height: 0; font-size: 0; clear: both; visibility: hidden; }
+.msg{    padding: 10px 20px; background-color: #fff; }
+.msg-left { float: left; margin-left: 10px; border-radius: 0 20px 20px 20px;} 
+.msg-right { float: right; margin-right: 10px; border-radius: 20px 0 20px 20px;} 
+
+.mobile-foot{ height: 50px; color: #ccc; line-height: 50px; box-sizing: border-box;  font-size: 14px; position: relative; cursor: pointer;}
+.foot1,.foot2{ display: none; margin-left: 20px;}
+.btn-box{ display: none; position: absolute; bottom: 50px; width: 100%; height: 600px; }
+.btn-box1{ position: absolute; bottom: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);}
+.btn-box2{ display: none; position: absolute; bottom: 0; width: 100%;}
+.btn-box p{ text-align: center; background: #ddd; border-bottom: 1px solid #fff; color: #000; margin: 0;}
+
+
+
