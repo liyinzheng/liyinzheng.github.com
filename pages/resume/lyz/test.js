@@ -14,49 +14,57 @@ $(function(){
 		authors=[{
 			ids: 0,
 			content: ['很高兴遇见你'],
-			toUser: [['我也是',0]]
+			toUser: [['我也是',11],['有多高兴？',12]]
 		}, {
-			ids: 1,
+			ids: 11,
 			content: ['你想知道点什么？'],
-			toUser: [['基本信息',1],['工作经历/经验',2],['专业技能',3],['关于',4]]
+			toUser: [['基本信息',21],['工作经历/经验',22],['专业技能',23],['关于',24]]
 		}, {
-			ids: 2,
+			ids: 12,
+			content: ['......','你想知道点什么？'],
+			toUser: [['基本信息',21],['工作经历/经验',22],['专业技能',23],['关于',24]]
+		},{
+			ids: 21,
 			content: ['基本信息s1','基本信息s2','基本信息s3'],
 			toUser: 0
 		},{
-			ids: 3,
+			ids: 22,
 			content: ['工作经历/经验s1','工作经历/经验s2','工作经历/经验s3'],
 			toUser: 0
 		},{
-			ids: 4,
+			ids: 23,
 			content: ['专业技能s1','专业技能s2','专业技能s3'],
 			toUser: 0
 		},{
-			ids: 5,
+			ids: 24,
 			content: ['关于s1','关于s2','关于s3'],
 			toUser: 0
 		}, ],
 		
 		users=[{
-			ids: 0,
+			ids: 11,
 			content: ['我也是'],
-			toAuthor: 1
+			toAuthor: 11
 		},{
-			ids: 1,
+			ids: 12,
+			content: ['有多高兴？'],
+			toAuthor: 12
+		},{
+			ids: 21,
 			content: ['基本信息'],
-			toAuthor: 2
+			toAuthor: 21
 		},{
-			ids: 2,
+			ids: 22,
 			content: ['工作经历/经验'],
-			toAuthor: 3
+			toAuthor: 22
 		},{
-			ids: 3,
+			ids: 23,
 			content: ['专业技能'],
-			toAuthor: 4
+			toAuthor: 23
 		},{
-			ids: 4,
+			ids: 24,
 			content: ['关于'],
-			toAuthor: 5
+			toAuthor: 24
 		},]
 		
 		;
@@ -68,7 +76,22 @@ $(function(){
 			})
 		}
 	
-	
+	function findbyids(l,x){
+		var temp;
+		if(l=='authors'){
+			authors.forEach(function(value){
+				if(x==value.ids) temp=value
+			})
+		}
+		
+		else if(l=='users'){
+			users.forEach(function(value){
+				if(x==value.ids) temp=value
+			})
+		}
+		
+		return temp
+	}
 	
 	
 	function getauthors(x){
@@ -116,16 +139,14 @@ $(function(){
 			$body.append('<div class="msg-box"><div class="msg msg-right"><div class="msg-back msg-back-right"></div><p>'+x+'</p></div></div>')
 			
 			pr=pr.then(function(){
-				return delay(500)
-			}).then(function(){
-				getauthors(authors[to])
+				getauthors(findbyids('authors',to))
 			})
 		}
 		body.scrollTop = body.scrollHeight;
 	}
 	
 	function sayusers(ids){
-		appendmessages(users[ids].content, 'user', users[ids].toAuthor)
+		appendmessages( findbyids('users',ids).content, 'user', findbyids('users',ids).toAuthor)
 	}
 	
 	function saysomething(){
@@ -163,7 +184,6 @@ $(function(){
 	
 	getauthors(authors[0])
 	
-	$body.css({'height': $(window).height()-200})
 	
 })
 
