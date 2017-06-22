@@ -161,14 +161,13 @@ $(function(){
 	
 	function change(){
 		if(btn==0){
-			$btnbox.show()
+			$btnbox1.show()
 			$btnbox2.slideDown()
 			btn=1
 		}
 		else{
-			$btnbox2.slideUp(function(){
-				$btnbox.hide()
-			})
+			$btnbox1.hide()
+			$btnbox2.slideUp()
 			btn=0
 		}
 	}
