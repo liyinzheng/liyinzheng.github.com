@@ -25,19 +25,19 @@ $(function(){
 			toUser: [['基本信息',21],['工作经历/经验',22],['专业技能',23],['关于',24]]
 		},{
 			ids: 21,
-			content: ['我叫李银政，出生于1993年2月，湖北武汉人','本科毕业于武汉理工大学材料科学与工程学院','联系电话为18771017283，邮箱是446784359@qq.com'],
+			content: ['基本信息s1','基本信息s2','基本信息s3'],
 			toUser: 0
 		},{
 			ids: 22,
-			content: ['2016年10月至今在天天网从事前端工作','所执行的任务大体上分为3块','1、日常促销活动页切图，根据设计图完成PC、app、wap的页面制作，包括js以及css动画。同时制作模版增加工作效率。参见<br /><a href="https://liyinzheng.github.io/tian/moban/index.html" target="_blank">工作模版</a>','2、商城页面样式调整，及购物车等页面的前端部分的重制。','3、按需求制作特效页面，以及小游戏的前端部分。例如：<br />(1)<a href="http://promotions.tiantian.com/cuxiao/201702lover-m/hongbao/wxhb.html" target="_blank">仿微信聊天页面(移动端)</a><br />(2)<a href="http://promotions.tiantian.com/cuxiao/170608tian/hb/pc/hb.html" target="_blank">红包雨小游戏PC版</a><br />(3)<a href="http://promotions.tiantian.com/cuxiao/170608tian/hb/wap/hb.html" target="_blank">红包雨小游戏移动版</a>'],
+			content: ['工作经历/经验s1','工作经历/经验s2','工作经历/经验s3'],
 			toUser: 0
 		},{
 			ids: 23,
-			content: ['熟练使用HTML5、CSS3，页面结构和布局（DIV+CSS布局，Flex布局等），熟练使用PS，根据设计图完成PC端、移动端web页面的开发','熟练使用JavaScript，框架和类库如Jquery，Bootstrap','熟悉CSS预处理语言Less','熟悉Ajax、DOM、JSON和 事件处理机制','了解MVVM模型，vue2.0，ES6语法标准，JS模块化开发','了解PHP及laravel框架和Mysql','会使用开发中常用的工具: webpack,NPM'],
+			content: ['专业技能s1','专业技能s2','专业技能s3'],
 			toUser: 0
 		},{
 			ids: 24,
-			content: ['谢谢喜欢','主页的创意参考于之前看过的一个页面','<a href="http://zhangwenli.com/" target="_blank">http://zhangwenli.com/</a> ','我觉得很有趣，就用来作一个简历模板'],
+			content: ['关于s1','关于s2','关于s3'],
 			toUser: 0
 		}, ],
 		
@@ -63,7 +63,7 @@ $(function(){
 			toAuthor: 23
 		},{
 			ids: 24,
-			content: ['这个主页好有意思啊！'],
+			content: ['关于'],
 			toAuthor: 24
 		},]
 		
