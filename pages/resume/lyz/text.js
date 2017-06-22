@@ -29,7 +29,7 @@ $(function(){
 			toUser: 0
 		},{
 			ids: 22,
-			content: ['2016年10月至今在天天网从事前端工作','所执行的任务大体上分为3块','1、日常促销活动页切图，根据设计图完成PC、app、wap的页面制作，包括js以及css动画。同时制作模版增加工作效率。参见<br /><a href="https://liyinzheng.github.io/tian/moban/index.html" target="_blank">工作模版</a>','2、商城页面样式调整，及购物车等页面的前端部分的重制。','3、按需求制作特效页面，以及小游戏的前端部分。例如：<br />(1)<a href="http://promotions.tiantian.com/cuxiao/201702lover-m/hongbao/wxhb.html" target="_blank">仿微信聊天页面(移动端)</a><br />(2)<a href="http://promotions.tiantian.com/cuxiao/170608tian/hb/pc/hb.html" target="_blank">红包雨小游戏PC版</a><br />(3)<a href="http://promotions.tiantian.com/cuxiao/170608tian/hb/wap/hb.html" target="_blank">红包雨小游戏移动版</a>'],
+			content: ['2016年10月至今在天天网从事前端工作','所执行的任务大体上分为3块','1、日常促销活动页切图，根据设计图完成PC、app、wap的页面制作，包括js以及css动画。同时制作模版增加工作效率。参见<br /><a href="https://liyinzheng.github.io/tian/moban/index.html" target="_blank">工作模版(PC端)</a>','2、商城页面样式调整，及购物车等页面的前端部分的重制。','3、按需求制作特效页面，以及小游戏的前端部分。例如：<br />(1)<a href="http://promotions.tiantian.com/cuxiao/201702lover-m/hongbao/wxhb.html" target="_blank">仿微信聊天页面(移动端)</a><br />(2)<a href="http://promotions.tiantian.com/cuxiao/170608tian/hb/pc/hb.html" target="_blank">红包雨小游戏(PC端)</a><br />(3)<a href="http://promotions.tiantian.com/cuxiao/170608tian/hb/mobile/hb.html" target="_blank">红包雨小游戏(移动端)</a>'],
 			toUser: 0
 		},{
 			ids: 23,
