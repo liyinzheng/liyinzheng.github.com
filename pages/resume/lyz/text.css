@@ -1,6 +1,6 @@
 
 
-body { background-color: #9BE4D8; padding: 0; margin: 0;}
+body { background-color: #FFFFCC; padding: 0; margin: 0;}
 .mobile{ margin: 30px auto; width: 360px; background-color: #eee; border-radius: 20px; overflow: hidden; }
 .mobile-head{ height: 50px; display: flex; align-items: center; justify-content: center;}
 .mobile-body{ height: 450px; box-sizing: border-box; padding: 20px 10px 0 10px; background-color: rgba(102,204,255,0.5); overflow-x: hidden; overflow-y: scroll;}
