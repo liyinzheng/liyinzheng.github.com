@@ -1,0 +1,78 @@
+*{ padding: 0; margin: 0;}
+.clearfix::after{content: ""; display: block; height: 0; font-size: 0; clear: both; visibility: hidden;}
+.lf{ float: left;}
+
+body,html{ width: 100%; height: 100%; font-size: 16px;}	
+.page{ width: 100%; height: 100%; font-size: 100%; margin: 0 auto; overflow: hidden;}
+
+
+.main{ position: relative; height: 92.7%;}			
+.content{ position: relative;   overflow: hidden;  padding: 0 10px; background-color: #ebebeb;}
+.msg{ position: relative;  width: 85%;  margin: 10px 0;  display: none;}
+.msg-0{ background-color: #cecece; color: #fff;  width: 75%; margin: 10px auto; padding: 10px;  border-radius: 10px;}
+.msg-7 .text img{ width: 46.9%; height: 27.9%;}
+
+
+			
+.image{ width: 12%; margin-right: 3%; padding-top: 2px;}
+.image img{ width: 100%;}
+.text{ width: 80%; }
+.name{ color: #636363;  margin-bottom: 5px;}
+
+.xinxi{ position: relative; width: 100%; }
+.xinxi span{ position: relative; display: inline-block; left: 3%; padding: 5px 10px; max-width: 100%; background: #fff; border: 1px solid #dcdcdc; border-radius: 5px;}
+
+.jiantou{ position: absolute; top: 15%; left: 1%; width: 2.5%;}
+	
+			
+.redbag{ position: relative; left: 5px; width: 90%;}
+.redbag>img{ width: 100%;}
+/*.msg .shoushi{ position: absolute; top: 50%; left: 65%; }*/
+
+@keyframes yuans{
+	0%{transform:  scale(1);}
+	50%{transform: scale(1.2);}
+	100%{transform:  scale(1);}
+}
+
+@-moz-keyframes yuans{
+	0%{transform:  scale(1);}
+	50%{transform: scale(1.2);}
+	100%{transform:  scale(1);}
+}
+
+@-webkit-keyframes yuans{
+	0%{transform:  scale(1);}
+	50%{transform: scale(1.2);}
+	100%{transform:  scale(1);}
+}
+
+@-ms-keyframes yuans{
+	0%{transform:  scale(1);}
+	50%{transform: scale(1.2);}
+	100%{transform:  scale(1);}
+}
+
+
+.biaoqing{ width: 15px; margin-right: 1px;}
+
+
+.bottom{ height: 50px;}
+.bottom img{ width: 100%; height: 100%;}
+
+.hongbao{ display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 15;  background: rgba(57,58,63,0.7);}
+.hongbao .hb{ height: 75vh; margin-top: 8vh ; text-align: center; position: relative;}
+.hongbao .hongbaotu{ height: 100%;  }
+.hongbao .guanbi{ position: absolute; z-index: 20; top: 0%; left: 6%; width: 25%; height: 15%;}
+.hongbao .chaihongbao{ position: absolute; z-index: 20; top: 50%; left: 20%; width: 60%; height: 40%; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.hongbao .shoushi{ position: absolute;  top: 75%; left: 50%; }
+.hongbao .kanshouqi{ position: absolute; z-index: 20; top: 75%; left: 25%; width: 50%; height: 30%;}		
+
+.hongbaoye{ display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #f2f2f2; z-index: 15;}
+.hongbaoye .guanbi{ position: absolute;z-index: 20; top: 0%; left: 0%; width: 15%; height: 10%; }
+.yuan{  width: 100%; height: 100%; border: 5px solid #ea5453; border-radius: 50%; background: none; animation: yuans 1.2s infinite;-moz-animation: yuans 1.2s infinite;-webkit-animation: yuans 1.2s infinite;-ms-animation: yuans 1.2s infinite;}
+.shouzhi{ position: absolute;z-index: 10; top: 120%; left: 0%; width: 350%; }
+.shoushi{ width: 5vw; height: 5vw;}
+.hongbaoye .shoushi{ position: absolute; top: 2%; left: 2%; }
+.hongbaoye .hongbaoyetu{ width: 100%;}
+			
