@@ -18,18 +18,18 @@ $(function(){
 		}, {
 			ids: 11,
 			content: ['你想知道点什么？'],
-			toUser: [['基本信息',21],['专业技能',23],['工作经历/经验',22],['关于',24]]
+			toUser: [['基本信息',21],['专业技能',23],['工作经历/经验',22],['项目经验',25],['关于',24]]
 		}, {
 			ids: 12,
 			content: ['......','你想知道点什么？'],
-			toUser: [['基本信息',21],['专业技能',23],['工作经历/经验',22],['关于',24]]
+			toUser: [['基本信息',21],['专业技能',23],['工作经历/经验',22],['项目经验',25],['关于',24]]
 		},{
 			ids: 21,
 			content: ['我叫李银政，出生于1993年2月，湖北武汉人','本科毕业于武汉理工大学材料科学与工程学院','联系电话为18771017283<br />邮箱是446784359@qq.com'],
 			toUser: 0
 		},{
 			ids: 22,
-			content: ['2016年10月至今在天天网从事前端工作','所执行的任务大体上分为3块','1、日常促销活动页切图，根据设计图完成PC、app、wap的页面制作，包括js以及css动画。同时制作模版增加工作效率。参见<br /><a href="https://liyinzheng.github.io/tian/moban/index.html">工作模版(PC端)</a>','2、参加过公司双十一与双十二大促，有抗压能力。','3、商城页面样式调整，及购物车等页面的前端部分的重制。','4、按需求制作特效页面，以及小游戏的前端部分。例如：<br />(1)<a href="https://liyinzheng.github.io/tian/wx/wxhb.html">仿微信聊天页面(移动端)</a><br />(2)<a href="https://liyinzheng.github.io/tian/hby/pc/hb.html">红包雨小游戏(PC端)</a><br />(3)<a href="https://liyinzheng.github.io/tian/hby/mobile/hb.html">红包雨小游戏(移动端)</a>'],
+			content: ['2016年10月至今在天天网从事前端工作','所执行的任务大体上分为3块','1、日常促销活动页切图，根据设计图完成PC、app、wap的页面制作，包括js以及css动画。同时制作模版增加工作效率。参见<br /><a href="https://liyinzheng.github.io/tian/moban/index.html">工作模版(PC端)</a>','2、参加过公司双十一与双十二大促，有抗压能力。','3、商城页面样式调整，及购物车等页面的前端部分的重制。','4、按需求制作特效页面，以及小游戏的前端部分。'],
 			toUser: 0
 		},{
 			ids: 23,
@@ -38,6 +38,10 @@ $(function(){
 		},{
 			ids: 24,
 			content: ['谢谢喜欢','主页的创意参考于之前看过的一个页面','<a href="http://zhangwenli.com/" target="_blank">http://zhangwenli.com/</a> ','我觉得很有趣，就用来作一个简历模板'],
+			toUser: 0
+		}, {
+			ids: 25,
+			content: ['(1)<a href="https://liyinzheng.github.io/tian/wx/wxhb.html">仿微信聊天页面(移动端)</a><br />(2)<a href="https://liyinzheng.github.io/tian/hby/pc/hb.html">红包雨小游戏(PC端)</a><br />(3)<a href="https://liyinzheng.github.io/tian/hby/mobile/hb.html">红包雨小游戏(移动端)</a><br />(4)<a href="https://liyinzheng.github.io/canvas/mytest/index.html">canvas初步学习</a>'],
 			toUser: 0
 		}, ],
 		
@@ -65,7 +69,11 @@ $(function(){
 			ids: 24,
 			content: ['这个主页好有意思啊！'],
 			toAuthor: 24
-		},]
+		},{
+			ids: 25,
+			content: ['项目经验'],
+			toAuthor: 25
+		}]
 		
 		;
 		
