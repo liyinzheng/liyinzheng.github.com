@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>矩形画板</title>
+		
+		<style> 
+         body {
+            background: #dddddd;
+         }
+
+         #canvas {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            margin: 20px;
+            background: #ffffff;
+            border: thin solid #aaaaaa;
+         }
+         
+         .cad{ position: absolute; top: 30px; left: 30px; z-index: 3;}
+      </style>
+      
+	</head>
+	
+	<body>
+		<p class="cad">可绘制图形，可拖动图形</p>
+		<canvas id='canvas' width='600' height='400'>
+	      Canvas not supported
+	    </canvas>
+	    
+	    <script type="text/javascript">
+	    	var canvas = document.getElementById('canvas'),
+		    ctx = canvas.getContext('2d'),
+		    drag=false,
+		    move=false,
+		    startImg,
+		    start={},
+		    tempshape,
+		    nowshape=[],
+		    shapes=[],
+		    r;
+		    
+		    
+		    function windowtocanvas(canvas,x,y){
+				var bbox=canvas.getBoundingClientRect();
+				return {x: (x-bbox.left)*(canvas.width/bbox.width), 
+						y: (y-bbox.top)*(canvas.height/bbox.height)}
+			}
+		    
+		    function drawbackground(){
+		    	ctx.fillStyle='#fff'
+		    	ctx.fillRect(0,0,canvas.width,canvas.height)
+		    	ctx.strokeStyle='#ccc';
+		    	ctx.beginPath()
+		    	for(var i=9.5; i<600; i+=10){
+		    		ctx.moveTo(i,0);
+		    		ctx.lineTo(i,400);
+		    		ctx.stroke()
+		    	}
+		    	for(var i=9.5; i<400; i+=10){
+		    		ctx.moveTo(0,i);
+		    		ctx.lineTo(600,i);
+		    		ctx.stroke()
+		    	}
+		    }
+		    
+		    function drawzhou(){
+		    	ctx.strokeStyle='#6cf'
+		    	ctx.beginPath()
+		    	ctx.moveTo(0,start.y)
+		    	ctx.lineTo(canvas.width,start.y)
+		    	ctx.moveTo(start.x,0)
+		    	ctx.lineTo(start.x,canvas.height)
+		    	ctx.stroke()
+		    }
+		    
+		    drawbackground()
+		    
+		    canvas.onmousedown=function(e){
+				start=windowtocanvas(canvas,e.clientX,e.clientY);
+				startImg=ctx.getImageData(0,0,canvas.width,canvas.height);
+				drag=true;
+				for(var i=shapes.length-1;i>=0;i--){
+					shapes[i].getmypath()
+					if(ctx.isPointInPath(start.x,start.y)){
+						nowshape[0]=i
+						nowshape[1]=shapes[i]
+						nowshape[2]=shapes[i].x
+						nowshape[3]=shapes[i].y
+						move=true
+						break
+					}
+				}
+			}
+			
+			canvas.onmousemove=function(e){
+				if(drag){
+					var temp=windowtocanvas(canvas,e.clientX,e.clientY);
+					if(move){
+						shapes[nowshape[0]].x=nowshape[2]+temp.x-start.x;
+						shapes[nowshape[0]].y=nowshape[3]+temp.y-start.y;
+						drawbackground()
+						for(var i=0;i<shapes.length;i++){
+							shapes[i].getmypath()
+							shapes[i].fillmypath()
+						}
+					}
+					else{
+						r=Math.sqrt(Math.pow(temp.x-start.x,2)+Math.pow(temp.y-start.y,2))
+						ctx.putImageData(startImg,0,0);
+						tempshape=new Shape(start.x,start.y,r)
+						tempshape.getmypath()
+						tempshape.fillmypath()
+						drawzhou()
+						
+					}
+				}
+			}
+			
+			canvas.onmouseup=function(e){
+				if(!move) {
+					shapes.push(tempshape);
+					ctx.putImageData(startImg,0,0);
+					tempshape=new Shape(start.x,start.y,r)
+					tempshape.getmypath()
+					tempshape.fillmypath()
+				}
+				drag=false;
+				move=false;
+			}
+			
+			function Shape(x,y,r){
+				this.x=x
+				this.y=y
+				this.r=r
+			}
+			
+			Shape.prototype.getmypath=function(){
+				ctx.save()
+				ctx.beginPath()
+				ctx.translate(this.x,this.y)
+				ctx.moveTo(0,this.r)
+				ctx.lineTo(this.r,0)
+				ctx.lineTo(0,-this.r)
+				ctx.lineTo(-this.r,0)
+				ctx.closePath()
+				ctx.restore()
+				
+				
+				
+			}
+			
+			Shape.prototype.fillmypath=function(){
+				ctx.save()
+				ctx.fillStyle='#acf'
+				ctx.strokeStyle='#e00'
+				ctx.strokeStyle='#67aed7'
+				ctx.stroke()
+				ctx.shadowColor='rgba(0,0,0,0.3)'
+				ctx.shadowOffsetX=4
+				ctx.shadowOffsetY=4
+				ctx.shadowBlur=6
+				ctx.fill()
+				ctx.restore()
+			}
+			
+			
+	    </script>
+	</body>
+</html>

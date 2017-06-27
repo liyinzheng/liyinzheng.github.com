@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>1</title>
+		
+		<style> 
+         body {
+            background: #dddddd;
+         }
+
+         #canvas {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            margin: 20px;
+            background: #fff;
+            border: thin solid #aaaaaa;
+         }
+      </style>
+      
+	</head>
+	
+	<body>
+		<canvas id='canvas' width='400' height='400'>
+	      Canvas not supported
+	    </canvas>
+	    
+	    <script type="text/javascript">
+	    	var canvas = document.getElementById('canvas'),
+		    ctx = canvas.getContext('2d'),
+		    radius={
+		    	r0: 130,
+		    	r1: 125,
+		    	r2: 120,
+		    	r3: 110
+		    },
+		    
+		    hand={
+		    	hr: 50,
+		    	hw:3,
+		    	mr: 70,
+		    	mw:2,
+		    	sr: 90,
+		    	sw:1
+		    }
+		    
+		    ;
+		    
+		    
+		    
+		    function windowtocanvas(canvas,x,y){
+				var bbox=canvas.getBoundingClientRect();
+				return {x: (x-bbox.left)*(canvas.width/bbox.width), 
+						y: (y-bbox.top)*(canvas.height/bbox.height)}
+			}
+		    
+		    ctx.translate(200,200)
+		    
+		    
+		    function background(){
+		    	ctx.clearRect(-200,-200,canvas.width,canvas.height)
+		    	drawwaikuang()
+		    	drawkedu()
+		    	drawdian()
+		    }
+		    
+		    function drawwaikuang(){
+		    	ctx.beginPath()
+		    	ctx.save()
+		    	ctx.arc(0,0,radius.r0,0,2*Math.PI,false)
+		    	ctx.arc(0,0,150,0,2*Math.PI,true)
+		    	ctx.fillStyle='rgba(102, 204, 255, 0.6)'
+		    	ctx.shadowColor='rgba(0, 0, 0, 0.2)'
+				ctx.shadowOffsetX=5
+				ctx.shadowOffsetY=5
+				ctx.shadowBlur=10
+		    	ctx.fill()
+		    	ctx.restore()
+		    }
+		    
+		    function drawkedu(){
+		    	for(var i=1;i<=60;i++){
+		    		xiaokedu(i)
+		    	}
+		    }
+		    
+		    function xiaokedu(i){
+		    	var a=i/60*2*Math.PI, 
+		    		tr;
+		    		
+		    	if(i%5==0) {
+		    		tr=radius.r2
+		    		drawwenzi(parseInt(i/5),a)
+		    	}
+		    	else tr=radius.r1
+		    	
+		    	ctx.beginPath()
+		    	ctx.moveTo(radius.r0*Math.sin(a),radius.r0*Math.cos(a))
+		    	ctx.lineTo(tr*Math.sin(a),tr*Math.cos(a))
+		    	ctx.strokeStyle='#000'
+		    	ctx.stroke()
+		    }
+		    
+		    function drawwenzi(n,q){
+		    	ctx.textAlign='center'
+		    	ctx.textBaseline='middle'
+		    	ctx.fillText(n,radius.r3*Math.sin(q),-radius.r3*Math.cos(q))
+//		    	注意canvas坐标系和x-y数学坐标系有一点区别,y轴是向下的
+		    }
+		    
+		    
+		    function drawdian(){
+		    	ctx.beginPath()
+		    	ctx.save()
+		    	ctx.fillStyle='rgba(120,240,255,0.8)'
+		    	ctx.strokeStyle='#aaa'
+		    	ctx.arc(0,0,5,0,2*Math.PI,false)
+		    	ctx.stroke()
+		    	ctx.fill()
+		    	ctx.restore()
+		    }
+		    
+			background()
+			
+			
+			function drawhand(handkind, angle){
+				ctx.beginPath()
+		    	ctx.save()
+		    	
+		    	var radius,width
+		    	
+		    	
+		    	switch (handkind){
+		    		case 'second':{
+		    			radius=hand.sr
+		    			width=hand.sw
+		    		}
+		    			break;
+		    		
+		    		case 'minute':{
+		    			radius=hand.mr
+		    			width=hand.mw
+		    		}
+		    			break;
+		    		
+		    		case 'hour':{
+		    			radius=hand.hr
+		    			width=hand.hw
+		    		}
+		    			break;
+		    	}
+		    	
+		    	ctx.moveTo(0,0)
+		    	ctx.lineTo(radius*Math.sin(angle),-radius*Math.cos(angle))
+		    	ctx.strokeStyle='#6cf'
+		    	ctx.lineWidth=width
+		    	ctx.stroke()
+		    	ctx.restore()
+			}
+			
+			
+			function painttime(time){
+				ctx.save()
+				ctx.textAlign='center'
+		    	ctx.textBaseline='bottom'
+		    	ctx.font='20px serif'
+		    	ctx.fillText(time,0,180)
+		    	ctx.restore()
+			}
+			
+			function clock(){
+				var time=new Date(),
+					h=time.getHours(),
+					m=time.getMinutes(),
+					s=time.getSeconds(),
+					th,tm,ts,ttime;
+				
+				ts=s/60*2*Math.PI;
+				tm=(m/60+s/3600)*2*Math.PI;
+				th=(h%12/12+m/720)*2*Math.PI;
+				
+				
+				background()
+				drawhand('hour', th)
+				drawhand('minute', tm)
+				drawhand('second', ts)
+				
+				
+				ttime=h+":"+m+":"+s;
+				
+				painttime(ttime)
+				
+				
+				window.requestAnimationFrame(clock)
+			}
+			
+			clock()
+			
+			
+	    </script>
+	</body>
+</html>
