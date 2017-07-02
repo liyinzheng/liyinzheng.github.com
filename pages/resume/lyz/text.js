@@ -41,7 +41,7 @@ $(function(){
 			toUser: 0
 		}, {
 			ids: 25,
-			content: ['(1)<a href="https://liyinzheng.github.io/tian/wx/wxhb.html">仿微信聊天页面(移动端)</a><br />(2)<a href="https://liyinzheng.github.io/tian/hby/pc/hb.html">红包雨小游戏(PC端)</a><br />(3)<a href="https://liyinzheng.github.io/tian/hby/mobile/hb.html">红包雨小游戏(移动端)</a><br />(4)<a href="https://liyinzheng.github.io/canvas/mytest/index.html">canvas初步学习</a>'],
+			content: ['(1)<b>仿聊天界面式电子简历</b><br /><b>项目描述：</b>仿照网络聊天的形式，对用户展示信息，起到了展示自己的作用。项目难点在于每条信息弹出之间存在的时间间隔，使用到了es6语法中的promise对象，实现在不使用回调的情况下的异步操作。<br /><a href="https://liyinzheng.github.io/pages/resume/lyz/text.html">电子简历</a><br />','(2)<b>红包雨小游戏</b><br /><b>项目描述：</b>为天天网运营过程中的促销活动页面，用于发放优惠券等。项目难点在于移动端的适配处理，PC端的对低版本IE的兼容性，动画的流畅性，图片预加载等技术。<br /><a href="https://liyinzheng.github.io/tian/hby/pc/hb.html">红包雨小游戏PC版</a><br /><a href="https://liyinzheng.github.io/tian/hby/mobile/hb.html">红包雨小游戏移动版</a>','(3)<b>仿微信聊天页面</b><br /><b>项目描述：</b>为天天网运营过程中的促销活动页面，用于在微信用户及朋友圈中起到宣传作用。项目使用到了微信分享的API，可自定义分享的信息。<br /><a href="https://liyinzheng.github.io/tian/wx/wxhb.html">微信页面</a>'],
 			toUser: 0
 		}, ],
 		
