@@ -5,10 +5,10 @@
 					for(var i=0;i<t.length;i++){
 						imgs[i]=new Image;
 						imgs[i].src = t[i];
-//						imgs[i].onload=ttqwer(i);
-//						function ttqwer(s){
-//							console.log('图片'+s+'已加载')
-//						}
+						imgs[i].onload=ttqwer(i);
+						function ttqwer(s){
+							console.log('图片'+s+'已加载')
+						}
 					}
 				}
 				
