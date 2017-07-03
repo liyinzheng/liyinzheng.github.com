@@ -3,7 +3,7 @@
 				function preLoadImg(t) {
 					var imgs = new Array();
 					for(var i=0;i<t.length;i++){
-						imgs[i]=new Image;
+						imgs[i]=new Image();
 						imgs[i].src = t[i];
 						imgs[i].onload=ttqwer(i);
 						function ttqwer(s){
