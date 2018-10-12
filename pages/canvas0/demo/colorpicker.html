@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>1</title>
+		
+		<style> 
+         body {
+            background: #fff;
+         }
+         
+         .page{ width: 600px; margin: 0 auto; padding: 50px 0; border: 1px solid #000;}
+		
+		.box{ display: flex; align-items: center; justify-content: center; position: relative;}
+		
+		.box span{ margin-right: 20px;}
+		
+        .box canvas {
+         	display: inline;
+            background: #fff;
+         }
+         
+        .box span.num{ position: absolute; left: 480px; top: 12px;}
+         
+        #canvas{  margin: 0 auto; display: block;}
+      </style>
+      
+	</head>
+	
+	<body>
+		<div class="page">
+			<div class="box">
+				<span>R:</span><canvas id='canvas1' width='270' height='50'>Canvas not supported</canvas><span class="num" id="num1"></span>
+			</div>
+			
+			<div class="box">
+				<span>G:</span><canvas id='canvas2' width='270' height='50'>Canvas not supported</canvas><span class="num"  id="num2"></span>
+			</div>
+			
+			<div class="box">
+				<span>B:</span><canvas id='canvas3' width='270' height='50'>Canvas not supported</canvas><span class="num"  id="num3"></span>
+			</div>
+			
+			<canvas id="canvas" width="200" height="200"></canvas>
+		</div>
+		
+	    
+	    <script type="text/javascript">
+		    
+		    	var r, g, b;
+		    	canvase=document.getElementById("canvas")
+				ctxs=canvase.getContext('2d')
+				ctxs.arc(100,100,100,0,Math.PI*2,false);
+				
+		    
+			function Choice(ids,num){
+				this.canvas=document.getElementById(ids);
+				this.nums=document.getElementById(num)
+				this.ctx=this.canvas.getContext('2d');
+				this.drag=false;
+				
+				this.bar=function(x){
+					this.ctx.fillStyle='rgb(200,200,200)'
+					this.ctx.strokeStyle='#333'
+					this.ctx.lineWidth=0.5
+					this.ctx.fillRect(x,15,15,20);
+//					this.ctx.strokeRect(x,15,15,20);
+					var tx=parseInt(x)
+					this.nums.innerText=tx;
+					switch(num){
+						case 'num1': r=tx; break;
+						case 'num2': g=tx; break;
+						case 'num3': b=tx; break;
+					}
+					
+					makeColor();
+				}
+				
+				this.clear=function(){
+					this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+				}
+				
+				this.getPosition=function(x,y){
+					var bbox=this.canvas.getBoundingClientRect();
+					return {x: (x-bbox.left)*(this.canvas.width/bbox.width), 
+							y: (y-bbox.top)*(this.canvas.height/bbox.height)}
+				}
+				
+				
+				this.back();
+				this.addevents();
+				this.bar(0);
+				
+				
+			}
+			
+			Choice.prototype={
+				
+				back: function(){
+					this.ctx.fillStyle='rgb(240,240,240)'
+					this.ctx.fillRect(0,20,270,10);
+				},
+				
+				addevents: function(){
+					var slider=this;
+					
+					this.canvas.onmousedown=function(e){
+						e.preventDefault();
+						slider.clear();
+						slider.back();
+						var temp=slider.getPosition(e.clientX,e.clientY);
+						slider.bar(temp.x);
+						slider.drag=true;
+					}
+				
+					window.onmousemove=function(e){
+						e.preventDefault();
+						for(var i=0;i<choices.length;i++){
+							if(choices[i].drag){
+								choices[i].clear();
+								choices[i].back();
+								var temp=choices[i].getPosition(e.clientX,e.clientY);
+								if(temp.x>255) temp.x=255
+								else if(temp.x<0) temp.x=0
+								choices[i].bar(temp.x);
+								break;
+							}
+						}
+					}
+				
+					window.onmouseup=function(e){
+						e.preventDefault();
+						for(var i=0;i<choices.length;i++){
+							choices[i].drag=false;
+						}
+					}
+				}
+			}
+			
+			choice1=new Choice('canvas1','num1');
+			choice2=new Choice('canvas2','num2');
+			choice3=new Choice('canvas3','num3');
+			choices=[choice1,choice2,choice3]
+			
+			function makeColor(){
+				//（在firefox上画圆会很卡,画方块不存在此问题。chorme上画圆仍然流畅。）问题在于，需要加上beginPath()，否则路径会越来越多，绘制起来越来越卡
+				ctxs.clearRect(0,0,200,200)
+				ctxs.fillStyle='rgb('+r+','+g+','+b+')'
+//				ctxs.fillRect(0,0,200,200)
+//				ctxs.beginPath();
+				ctxs.fill()
+			}
+			
+	    </script>
+	</body>
+</html>

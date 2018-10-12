@@ -1,0 +1,16 @@
+@import "default";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    @include all;
+}
+
+body{
+   @include flex-center;
+   font-weight: bold;
+   font-size: 100px;
+}
